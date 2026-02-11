@@ -14,20 +14,23 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
-namespace tiny_elediastyles\privacy;
-
 /**
- * Privacy API implementation for the EleDia Styles plugin.
+ * Privacy Subsystem implementation for tiny_elediastyles.
  *
  * @package     tiny_elediastyles
- * @category    privacy
  * @copyright   2025 Alex Schander <alexander.schander@eledia.de>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class provider implements \core_privacy\local\metadata\null_provider {
 
+namespace tiny_elediastyles\privacy;
+
+/**
+ * Privacy provider for tiny_elediastyles.
+ */
+class provider implements \core_privacy\local\metadata\null_provider {
     /**
-     * Returns stringid of a text explaining that this plugin stores no personal data.
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
      *
      * @return string
      */

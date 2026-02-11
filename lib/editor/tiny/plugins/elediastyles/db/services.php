@@ -25,11 +25,11 @@
 defined('MOODLE_INTERNAL') || die();
 
 $functions = [
-    'tiny_elediastyles_get_css' => [
-        'classname'     => 'tiny_elediastyles\external\get_css',
-        'methodname'    => 'execute',
-        'description'   => 'Get the CSS for the editor styles',
-        'type'          => 'read',
-        'ajax'          => true,
-    ],
+        'tiny_elediastyles_get_css' => [
+                'classname'     => 'tiny_elediastyles\external\get_css',
+                'methodname'    => 'execute',
+                'description'   => 'Get the CSS for the editor styles',
+                'type'          => 'read',
+                'ajax'          => true,
+        ],
 ];

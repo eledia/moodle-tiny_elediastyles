@@ -18,12 +18,9 @@
  * Library functions for tiny_elediastyles.
  *
  * @package     tiny_elediastyles
- * @category    lib
  * @copyright   2025 Alex Schander <alexander.schander@eledia.de>
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die();
 
 /**
  * Compiles SCSS string to CSS string.

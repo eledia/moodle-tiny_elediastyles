@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Web service definitions for tiny_elediastyles.
+ * Capability definitions for tiny_elediastyles.
  *
  * @package     tiny_elediastyles
  * @copyright   2025 Alex Schander <alexander.schander@eledia.de>
@@ -25,12 +25,12 @@
 defined('MOODLE_INTERNAL') || die();
 
 $capabilities = [
-    'tiny/elediastyles:use' => [
-        'captype'      => 'write',
-        'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes'   => [
-            'manager'         => CAP_ALLOW,
-            'editingteacher'  => CAP_ALLOW,
+        'tiny/elediastyles:use' => [
+                'captype'      => 'write',
+                'contextlevel' => CONTEXT_SYSTEM,
+                'archetypes'   => [
+                        'manager'         => CAP_ALLOW,
+                        'editingteacher'  => CAP_ALLOW,
+                ],
         ],
-    ],
 ];

@@ -33,7 +33,6 @@ use editor_tiny\plugin_with_configuration;
  * Tiny EleDia Styles plugin info class.
  */
 class plugininfo extends plugin implements plugin_with_buttons, plugin_with_configuration {
-
     /**
      * Get the list of available buttons.
      *
