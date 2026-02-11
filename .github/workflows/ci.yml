@@ -27,7 +27,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
         with:
-          path: plugin/lib/editor/tiny/plugins/elediastyles
+          path: plugin
       
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -47,7 +47,7 @@ jobs:
       
       - name: Install moodle-plugin-ci
         run: |
-          moodle-plugin-ci install --plugin ./plugin --db-host=127.0.0.1
+          moodle-plugin-ci install --plugin ./plugin/lib/editor/tiny/plugins/elediastyles --db-host=127.0.0.1
         env:
           DB: pgsql
           MOODLE_BRANCH: MOODLE_405_STABLE
