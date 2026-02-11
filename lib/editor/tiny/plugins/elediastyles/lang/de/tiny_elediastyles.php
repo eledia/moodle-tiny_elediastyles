@@ -26,28 +26,37 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['button_showStyles'] = 'Stile anzeigen';
+$string['button_clearStyles'] = 'Style löschen';
 $string['menuitem_startstyles'] = 'CSS-Header anzeigen';
 $string['pluginname'] = 'eLeDia Styles';
+$string['helplinktext'] = 'eLeDia Styles';
 $string['privacy:metadata'] = 'eLeDia Styles speichert keine personenbezogenen Daten.';
+$string['pluginname_desc'] = 'Benutzerdefinierte CSS-Stile zum TinyMCE-Editor hinzufügen.';
+
+// Settings.
+$string['settings'] = 'eLeDia Styles – Editor-Einstellungen';
+$string['settings_desc'] = 'Konfigurieren Sie das eLeDia-Styles-Plugin für TinyMCE.';
 $string['styleslist'] = 'Style-Definitionen (JSON)';
 $string['styleslist_desc'] = 'JSON mit "styles" (Liste aus label/class/type) und "css"-Klassen für die Darstellung.';
 $string['csslist'] = 'CSS-Definitionen';
 $string['csslist_desc'] = 'Fügen Sie den CSS-Code wie üblich in dieses Textfeld ein.';
-$string['settings'] = 'eLeDia Styles – Editor-Einstellungen';
-$string['settings_desc'] = 'Konfigurieren Sie das eLeDia-Styles-Plugin für TinyMCE.';
 $string['allowedroles'] = 'Zugelassene Rollen';
 $string['allowedroles_desc'] = 'Wählen Sie aus, welche Rollen das eLeDia-Styles-Plugin verwenden dürfen.';
 $string['compiled_css_heading'] = 'Kompiliertes CSS (zum Kopieren ins Theme)';
-$string['compiled_css_empty'] = 'Noch kein CSS kompiliert. Bitte SCSS eingeben und speichern.';
+$string['compiled_css_empty'] = 'Noch kein CSS kompiliert. Bitte CSS eingeben und speichern.';
 $string['copy_css'] = 'Alles kopieren';
 $string['copied_to_clipboard'] = 'CSS-Code in die Zwischenablage kopiert!';
-$string['button_clearStyles'] = 'Style löschen';
 $string['showclearbutton'] = '"Style löschen"-Button separat anzeigen';
 $string['showclearbutton_desc'] = 'Standardmäßig befindet sich die Funktion "Style löschen" im Dropdown-Menü. Wenn diese Option aktiviert wird, wird sie stattdessen als separater Button in der Werkzeugleiste angezeigt.';
 $string['useexternalcss'] = 'Externe CSS laden (Tiny)';
 $string['useexternalcss_desc'] = 'Wenn aktiviert, wird die unten angegebene CSS-URL im Tiny-Editor eingebunden.';
 $string['externalcssurl'] = 'Externe CSS-URL (Tiny)';
-$string['externalcssurl_desc'] = 'Öffentliche HTTPS-URL zu einer CSS-Datei, die im Tiny-Editor-iFrame geladen werden soll.';
-$string['scssscompilerror'] = 'SCSS konnte nicht kompiliert werden. Bitte prüfen Sie den Code.';
+$string['externalcssurl_desc'] = 'Fügen Sie eine oder mehrere vollständige URLs zu externen CSS-Dateien ein. Bitte eine URL pro Zeile.';
+
+// SCSS compilation messages.
+$string['scsscompileerror'] = 'SCSS konnte nicht kompiliert werden. Bitte prüfen Sie den Code.';
 $string['scsscompilesuccess'] = 'SCSS wurde erfolgreich kompiliert und gespeichert.';
 $string['scsscompilernotfound'] = 'SCSS-Compiler-Bibliothek nicht gefunden.';
+
+// Capability strings.
+$string['elediastyles:use'] = 'eLeDia-Styles-Plugin verwenden';

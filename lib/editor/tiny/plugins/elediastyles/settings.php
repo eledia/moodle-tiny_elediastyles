@@ -41,6 +41,13 @@ if ($hassiteconfig) {
     $defaultcss = '.test { color: red; }';
 
     if ($ADMIN->fulltree) {
+        // Add introductory heading.
+        $settings->add(new admin_setting_heading(
+                'tiny_elediastyles/pluginname',
+                get_string('pluginname', 'tiny_elediastyles'),
+                get_string('pluginname_desc', 'tiny_elediastyles')
+        ));
+
         $settingjson = new admin_setting_configtextarea(
                 'tiny_elediastyles/styleslist',
                 get_string('styleslist', 'tiny_elediastyles'),
@@ -89,7 +96,8 @@ if ($hassiteconfig) {
             global $PAGE;
             $PAGE->requires->js_call_amd('tiny_elediastyles/copycss', 'init');
 
-            $compiledcssdisplay = '<button type="button" id="copy-css-button" class="btn btn-secondary" style="margin-bottom: 10px;">'
+            $compiledcssdisplay = '<button type="button" id="copy-css-button" class="btn btn-secondary" '
+                    . 'style="margin-bottom: 10px;">'
                     . get_string('copy_css', 'tiny_elediastyles')
                     . '</button>';
             $compiledcssdisplay .= '<pre id="compiled-css" style="background-color: #f5f5f5; border: 1px solid #ccc; '
