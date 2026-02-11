@@ -44,48 +44,48 @@ if ($hassiteconfig) {
         // Add introductory heading.
         $settings->add(new admin_setting_heading(
             'tiny_elediastyles/pluginname',
-                get_string('pluginname', 'tiny_elediastyles'),
-                get_string('pluginname_desc', 'tiny_elediastyles')
+            get_string('pluginname', 'tiny_elediastyles'),
+            get_string('pluginname_desc', 'tiny_elediastyles')
         ));
 
         $settingjson = new admin_setting_configtextarea(
             'tiny_elediastyles/styleslist',
-                get_string('styleslist', 'tiny_elediastyles'),
-                get_string('styleslist_desc', 'tiny_elediastyles'),
-                $default
+            get_string('styleslist', 'tiny_elediastyles'),
+            get_string('styleslist_desc', 'tiny_elediastyles'),
+            $default
         );
         $settings->add($settingjson);
 
         $settingcss = new admin_setting_configtextarea(
             'tiny_elediastyles/csslist',
-                get_string('csslist', 'tiny_elediastyles'),
-                get_string('csslist_desc', 'tiny_elediastyles'),
-                $defaultcss,
-                PARAM_RAW
+            get_string('csslist', 'tiny_elediastyles'),
+            get_string('csslist_desc', 'tiny_elediastyles'),
+            $defaultcss,
+            PARAM_RAW
         );
         $settingcss->set_updatedcallback('tiny_elediastyles_process_settings_update');
         $settings->add($settingcss);
 
         $settings->add(new admin_setting_configcheckbox(
             'tiny_elediastyles/useexternalcss',
-                get_string('useexternalcss', 'tiny_elediastyles'),
-                get_string('useexternalcss_desc', 'tiny_elediastyles'),
-                0
+            get_string('useexternalcss', 'tiny_elediastyles'),
+            get_string('useexternalcss_desc', 'tiny_elediastyles'),
+            0
         ));
 
         $settings->add(new admin_setting_configtextarea(
             'tiny_elediastyles/externalcssurl',
-                get_string('externalcssurl', 'tiny_elediastyles'),
-                get_string('externalcssurl_desc', 'tiny_elediastyles'),
+            get_string('externalcssurl', 'tiny_elediastyles'),
+            get_string('externalcssurl_desc', 'tiny_elediastyles'),
             '',
-                PARAM_RAW
+            PARAM_RAW
         ));
 
         $settings->add(new admin_setting_configcheckbox(
             'tiny_elediastyles/showclearbutton',
-                get_string('showclearbutton', 'tiny_elediastyles'),
-                get_string('showclearbutton_desc', 'tiny_elediastyles'),
-                1
+            get_string('showclearbutton', 'tiny_elediastyles'),
+            get_string('showclearbutton_desc', 'tiny_elediastyles'),
+            1
         ));
 
         $compiledcss = get_config('tiny_elediastyles', 'compiled_css');
@@ -108,8 +108,8 @@ if ($hassiteconfig) {
 
         $settings->add(new admin_setting_heading(
             'tiny_elediastyles_compiled_css_heading',
-                get_string('compiled_css_heading', 'tiny_elediastyles'),
-                $compiledcssdisplay
+            get_string('compiled_css_heading', 'tiny_elediastyles'),
+            $compiledcssdisplay
         ));
     }
 }
