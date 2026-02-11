@@ -28,33 +28,53 @@ defined('MOODLE_INTERNAL') || die();
 
 require_once($CFG->libdir . '/externallib.php');
 
+use context;
 use external_api;
 use external_function_parameters;
 use external_single_structure;
 use external_value;
 
+/**
+ * External service to get CSS for the editor.
+ */
 class get_css extends external_api {
-
     /**
      * Returns description of method parameters.
      *
      * @return external_function_parameters
      */
     public static function execute_parameters() {
-        return new external_function_parameters([]);
+        return new external_function_parameters([
+                'contextid' => new external_value(PARAM_INT, 'The context id', VALUE_DEFAULT, 1),
+        ]);
     }
 
     /**
      * Get the CSS.
      *
+     * @param int $contextid The context id
      * @return array CSS content
      */
-    public static function execute() {
-        // Get the CSS from config
-        $css = get_config('tiny_elediastyles', 'csslist');
-        
+    public static function execute($contextid = 1) {
+        global $USER;
+
+        // Validate parameters.
+        $params = self::validate_parameters(self::execute_parameters(), [
+                'contextid' => $contextid,
+        ]);
+
+        // Validate context.
+        $context = context::instance_by_id($params['contextid']);
+        self::validate_context($context);
+
+        // Check capability.
+        require_capability('tiny/elediastyles:use', $context);
+
+        // Get the CSS from config.
+        $css = get_config('tiny_elediastyles', 'compiled_css');
+
         return [
-            'css' => $css
+                'css' => $css,
         ];
     }
 
@@ -65,7 +85,7 @@ class get_css extends external_api {
      */
     public static function execute_returns() {
         return new external_single_structure([
-            'css' => new external_value(PARAM_RAW, 'The CSS content')
+                'css' => new external_value(PARAM_RAW, 'The CSS content'),
         ]);
     }
 }
