@@ -27,72 +27,85 @@ namespace tiny_elediastyles;
 use context;
 use editor_tiny\plugin;
 use editor_tiny\plugin_with_buttons;
-use editor_tiny\plugin_with_menuitems;
 use editor_tiny\plugin_with_configuration;
 
-class plugininfo extends plugin implements plugin_with_buttons, plugin_with_configuration
-{
+/**
+ * Tiny EleDia Styles plugin info class.
+ */
+class plugininfo extends plugin implements plugin_with_buttons, plugin_with_configuration {
 
-	public static function get_available_buttons(): array
-	{
-		return [
-			'tiny_elediastyles/tiny_htmlblock_btn',
-			'tiny_elediastyles/tiny_htmlblock_btn_clear'
-		];
-	}
+    /**
+     * Get the list of available buttons.
+     *
+     * @return array
+     */
+    public static function get_available_buttons(): array {
+        return [
+                'tiny_elediastyles/tiny_htmlblock_btn',
+                'tiny_elediastyles/tiny_htmlblock_btn_clear',
+        ];
+    }
 
-	public static function get_plugin_configuration_for_context(
-		\context $context,
-		array $options,
-		array $fpoptions,
-		?\editor_tiny\editor $editor = null
-	): array {
-		global $USER;
+    /**
+     * Get plugin configuration for context.
+     *
+     * @param context $context The context
+     * @param array $options Editor options
+     * @param array $fpoptions File picker options
+     * @param \editor_tiny\editor|null $editor The editor instance
+     * @return array Configuration array
+     */
+    public static function get_plugin_configuration_for_context(
+            \context $context,
+            array $options,
+            array $fpoptions,
+            ?\editor_tiny\editor $editor = null
+    ): array {
+        global $USER;
 
-		// First check if the standard capability check passes
-		if (!has_capability('tiny/elediastyles:use', $context)) {
-			return [];
-		}
+        // First check if the standard capability check passes.
+        if (!has_capability('tiny/elediastyles:use', $context)) {
+            return [];
+        }
 
-		// Then check if the user's role is in the allowed roles list
-		$allowedroles = get_config('tiny_elediastyles', 'allowedroles');
-		if (!empty($allowedroles)) {
-			$allowedroles = explode(',', $allowedroles);
-			$userroles = get_user_roles($context, $USER->id);
+        // Then check if the user's role is in the allowed roles list.
+        $allowedroles = get_config('tiny_elediastyles', 'allowedroles');
+        if (!empty($allowedroles)) {
+            $allowedroles = explode(',', $allowedroles);
+            $userroles = get_user_roles($context, $USER->id);
+            $roleallowed = false;
+            foreach ($userroles as $role) {
+                if (in_array($role->roleid, $allowedroles)) {
+                    $roleallowed = true;
+                    break;
+                }
+            }
+            if (!$roleallowed) {
+                return [];
+            }
+        }
 
-			$roleallowed = false;
-			foreach ($userroles as $role) {
-				if (in_array($role->roleid, $allowedroles)) {
-					$roleallowed = true;
-					break;
-				}
-			}
+        // Import styles & css.
+        $jsondef = get_config('tiny_elediastyles', 'styleslist');
+        $cssdef = get_config('tiny_elediastyles', 'compiled_css');
 
-			if (!$roleallowed) {
-				return [];
-			}
-		}
-		//import styles & css
-		$jsondef = get_config('tiny_elediastyles', 'styleslist');
-		$cssdef = get_config('tiny_elediastyles', 'compiled_css');
-		//import checkbox for showing button
-		$showclearbutton = get_config('tiny_elediastyles', 'showclearbutton');
+        // Import checkbox for showing button.
+        $showclearbutton = get_config('tiny_elediastyles', 'showclearbutton');
 
-		//import external css
-		$useexternal = (bool)get_config('tiny_elediastyles', 'useexternalcss');
-		$external = trim((string)get_config('tiny_elediastyles', 'externalcssurl'));
+        // Import external css.
+        $useexternal = (bool)get_config('tiny_elediastyles', 'useexternalcss');
+        $external = trim((string)get_config('tiny_elediastyles', 'externalcssurl'));
 
-		if (!$useexternal || $external === '' || stripos($external, 'https://') !== 0) {
-			$external = '';
-		}
+        if (!$useexternal || $external === '' || stripos($external, 'https://') !== 0) {
+            $external = '';
+        }
 
-
-		return [
-			'jsonDefinition' => $jsondef,
-			'cssDefinition' => $cssdef,
-			'externalCssUrl'  => $external,
-			'useExternalCss'  => ($external !== ''),
-			'showclearbutton' => (bool)$showclearbutton,
-		];
-	}
+        return [
+                'jsonDefinition' => $jsondef,
+                'cssDefinition' => $cssdef,
+                'externalCssUrl'  => $external,
+                'useExternalCss'  => ($external !== ''),
+                'showclearbutton' => (bool)$showclearbutton,
+        ];
+    }
 }
