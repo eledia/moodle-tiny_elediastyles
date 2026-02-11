@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'tiny_elediastyles';
-$plugin->release = '1.2.0';
-$plugin->version = 2025090102;
+$plugin->release = '1.3.0';
+$plugin->version = 2026021100;  
 $plugin->requires  = 2024100100;
-$plugin->maturity = MATURITY_STABLE; 
+$plugin->maturity = MATURITY_STABLE;
