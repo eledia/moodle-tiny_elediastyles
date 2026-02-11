@@ -43,13 +43,13 @@ if ($hassiteconfig) {
     if ($ADMIN->fulltree) {
         // Add introductory heading.
         $settings->add(new admin_setting_heading(
-                'tiny_elediastyles/pluginname',
+            'tiny_elediastyles/pluginname',
                 get_string('pluginname', 'tiny_elediastyles'),
                 get_string('pluginname_desc', 'tiny_elediastyles')
         ));
 
         $settingjson = new admin_setting_configtextarea(
-                'tiny_elediastyles/styleslist',
+            'tiny_elediastyles/styleslist',
                 get_string('styleslist', 'tiny_elediastyles'),
                 get_string('styleslist_desc', 'tiny_elediastyles'),
                 $default
@@ -57,7 +57,7 @@ if ($hassiteconfig) {
         $settings->add($settingjson);
 
         $settingcss = new admin_setting_configtextarea(
-                'tiny_elediastyles/csslist',
+            'tiny_elediastyles/csslist',
                 get_string('csslist', 'tiny_elediastyles'),
                 get_string('csslist_desc', 'tiny_elediastyles'),
                 $defaultcss,
@@ -67,22 +67,22 @@ if ($hassiteconfig) {
         $settings->add($settingcss);
 
         $settings->add(new admin_setting_configcheckbox(
-                'tiny_elediastyles/useexternalcss',
+            'tiny_elediastyles/useexternalcss',
                 get_string('useexternalcss', 'tiny_elediastyles'),
                 get_string('useexternalcss_desc', 'tiny_elediastyles'),
                 0
         ));
 
         $settings->add(new admin_setting_configtextarea(
-                'tiny_elediastyles/externalcssurl',
+            'tiny_elediastyles/externalcssurl',
                 get_string('externalcssurl', 'tiny_elediastyles'),
                 get_string('externalcssurl_desc', 'tiny_elediastyles'),
-                '',
+            '',
                 PARAM_RAW
         ));
 
         $settings->add(new admin_setting_configcheckbox(
-                'tiny_elediastyles/showclearbutton',
+            'tiny_elediastyles/showclearbutton',
                 get_string('showclearbutton', 'tiny_elediastyles'),
                 get_string('showclearbutton_desc', 'tiny_elediastyles'),
                 1
@@ -107,7 +107,7 @@ if ($hassiteconfig) {
         }
 
         $settings->add(new admin_setting_heading(
-                'tiny_elediastyles_compiled_css_heading',
+            'tiny_elediastyles_compiled_css_heading',
                 get_string('compiled_css_heading', 'tiny_elediastyles'),
                 $compiledcssdisplay
         ));
